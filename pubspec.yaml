@@ -1,6 +1,6 @@
 name: pe_paytm
-description: A new Flutter package project.
-version: 0.0.3
+description: This payment integration is with Flutter and node which will help the developer a lot in making easy payments, which used to be a problem in the past, now that the problem is solved.  Because we made it through the payment gateway of Paytm. Any developer can use easily and integrated with their project by reading the readme file.
+version: 0.0.4
 author: Harsh Agrawal <agrawalharsh90@gmail.com> Harsh Tyagi <harshtyagimdr@gmail.com>
 homepage: https://github.com/harshtyagimdr/pe_paytm
 

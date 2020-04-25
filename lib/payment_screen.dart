@@ -66,50 +66,43 @@ class _PaymentScreenState extends State<PaymentScreen> {
     return SafeArea(
       child: Scaffold(
           body: Stack(
-            children: <Widget>[
-              Container(
-                width: MediaQuery
-                    .of(context)
-                    .size
-                    .width,
-                height: MediaQuery
-                    .of(context)
-                    .size
-                    .height,
-                child: WebView(
-                  debuggingEnabled: false,
-                  javascriptMode: JavascriptMode.unrestricted,
-                  onWebViewCreated: (controller) {
-                    _webController = controller;
-                    _webController.loadUrl(
-                        new Uri.dataFromString(
-                            _loadHTML(), mimeType: 'text/html')
-                            .toString());
-                  },
-                  onPageFinished: (page) {
-                    if (page.contains("/process")) {
-                      if (_loadingPayment) {
-                        this.setState(() {
-                          _loadingPayment = false;
-                        });
-                      }
-                    }
-                    if (page.contains("/paymentReceipt")) {
-                      getData();
-                    }
-                  },
-                ),
-              ),
-              (_loadingPayment)
-                  ? Center(
-                child: CircularProgressIndicator(),
-              )
-                  : Center(),
-              (_responseStatus != PePaytmStatus.PAYMENT_LOADING)
-                  ? Center(child: getResponseScreen())
-                  : Center()
-            ],
-          )),
+        children: <Widget>[
+          Container(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
+            child: WebView(
+              debuggingEnabled: false,
+              javascriptMode: JavascriptMode.unrestricted,
+              onWebViewCreated: (controller) {
+                _webController = controller;
+                _webController.loadUrl(
+                    new Uri.dataFromString(_loadHTML(), mimeType: 'text/html')
+                        .toString());
+              },
+              onPageFinished: (page) {
+                if (page.contains("/process")) {
+                  if (_loadingPayment) {
+                    this.setState(() {
+                      _loadingPayment = false;
+                    });
+                  }
+                }
+                if (page.contains("/paymentReceipt")) {
+                  getData();
+                }
+              },
+            ),
+          ),
+          (_loadingPayment)
+              ? Center(
+                  child: CircularProgressIndicator(),
+                )
+              : Center(),
+          (_responseStatus != PePaytmStatus.PAYMENT_LOADING)
+              ? Center(child: getResponseScreen())
+              : Center()
+        ],
+      )),
     );
   }
 }
@@ -119,14 +112,8 @@ class PaymentSuccessfulScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.white,
-      height: MediaQuery
-          .of(context)
-          .size
-          .height,
-      width: MediaQuery
-          .of(context)
-          .size
-          .width,
+      height: MediaQuery.of(context).size.height,
+      width: MediaQuery.of(context).size.width,
       child: Padding(
         padding: const EdgeInsets.all(15.0),
         child: Center(
@@ -177,14 +164,8 @@ class PaymentFailedScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.white,
-      height: MediaQuery
-          .of(context)
-          .size
-          .height,
-      width: MediaQuery
-          .of(context)
-          .size
-          .width,
+      height: MediaQuery.of(context).size.height,
+      width: MediaQuery.of(context).size.width,
       child: Padding(
         padding: const EdgeInsets.all(15.0),
         child: Center(
@@ -235,14 +216,8 @@ class CheckSumFailedScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.white,
-      height: MediaQuery
-          .of(context)
-          .size
-          .height,
-      width: MediaQuery
-          .of(context)
-          .size
-          .width,
+      height: MediaQuery.of(context).size.height,
+      width: MediaQuery.of(context).size.width,
       child: Padding(
         padding: EdgeInsets.all(15.0),
         child: Center(
